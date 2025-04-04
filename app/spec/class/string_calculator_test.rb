@@ -4,7 +4,7 @@ RSpec.describe StringCalculator do
   let(:object) { StringCalculator.new }
 
   describe ".add" do
-    it "returns '0' for empty string" do      
+    it "returns '0' for empty string" do
       expect(object.add("")).to eq(0)
     end
 
