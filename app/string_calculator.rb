@@ -1,5 +1,6 @@
 class StringCalculator
-  def initialize()
+  def initialize(delimeter = /,|\n/)
+    @delimeter = delimeter
   end
 
   def add(string)
@@ -12,6 +13,7 @@ class StringCalculator
     string_validator(string)
 
     # ? If string not empty move ahead with the summation
+    string = set_delimeter(string)
     numbers = number_parser(string)
     answer = sum(numbers)
 
@@ -27,12 +29,23 @@ class StringCalculator
 
   # ? Extracts the numbers from agiven string
   def number_parser(string)
-    return string.split(/[\n,]/)
+    return string.split(/#{@delimeter}/)
   end
 
   def string_validator(string)
     if string.match?(",,")
       raise "Invalid argument : #{string}"
     end
+  end
+
+  def set_delimeter(string)
+    if string.start_with?("//") # ? We enter the block, if string has // at start, so that means there's a custom delimeter
+      separation = string.split("\n", 2) # ? First block with // and custom delimeter and second with numbers
+      @delimeter = separation[0][2..] # ? extract the delimeter
+      @delimeter = Regexp.escape(@delimeter) # ? Escape it for regex
+      string = separation[1] # ? Remaining part with numbers      
+    end
+
+    return string
   end
 end

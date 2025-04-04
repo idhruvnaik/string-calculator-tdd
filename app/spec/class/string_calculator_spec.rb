@@ -29,5 +29,13 @@ RSpec.describe StringCalculator do
     it "failing test case for improper imputs" do
       expect { object.add("1,,2") }.to raise_error(StandardError)
     end
+
+    it "supports custom delimiter ;" do
+      expect(StringCalculator.new.add("//;\n1;2")).to eq(3)
+    end
+
+    it "supports custom delimiter *" do
+      expect(StringCalculator.new.add("//*\n1*2")).to eq(3)
+    end
   end
 end
