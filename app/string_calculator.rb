@@ -8,9 +8,8 @@ class StringCalculator
         return sum # ? If string is empty return '0'
       end
 
-      if string.include?(",,")
-        raise "Invalid argument : #{string}"
-      end
+      # !! Validate string
+      string_validator(string) 
 
       # ? If string not empty move ahead with the summation
       numbers = number_parser(string)
@@ -29,5 +28,11 @@ class StringCalculator
   # ? Extracts the numbers from agiven string
   def number_parser(string)
     return string.split(/[\n,]/)
+  end
+
+  def string_validator(string)
+    if string.match?(",,")
+      raise "Invalid argument : #{string}"
+    end
   end
 end
