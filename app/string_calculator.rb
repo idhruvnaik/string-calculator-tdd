@@ -4,27 +4,27 @@ class StringCalculator
 
   def add(string)
     sum = 0
-      if string.empty?
-        return sum # ? If string is empty return '0'
-      end
+    if string.empty?
+      return sum # ? If string is empty return '0'
+    end
 
-      # !! Validate string
-      string_validator(string) 
+    # !! Validate string
+    string_validator(string)
 
-      # ? If string not empty move ahead with the summation
-      numbers = number_parser(string)
-      answer = sum(numbers)
+    # ? If string not empty move ahead with the summation
+    numbers = number_parser(string)
+    answer = sum(numbers)
 
-      return answer
+    return answer
   end
 
-  private 
+  private
 
   # ? Performs the sum of given numbers
   def sum(numbers = [])
     return numbers.map(&:to_i).sum
   end
-  
+
   # ? Extracts the numbers from agiven string
   def number_parser(string)
     return string.split(/[\n,]/)
