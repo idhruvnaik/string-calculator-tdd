@@ -25,17 +25,21 @@ RSpec.describe StringCalculator do
       expect(object.add("1\n4,5")).to eq(10)
     end
 
-    # !! Negative flow test cases
-    it "failing test case for improper imputs" do
-      expect { object.add("1,,2") }.to raise_error(StandardError)
-    end
-
     it "supports custom delimiter ;" do
       expect(StringCalculator.new.add("//;\n1;2")).to eq(3)
     end
 
     it "supports custom delimiter *" do
       expect(StringCalculator.new.add("//*\n1*2")).to eq(3)
+    end
+
+    # !! Negative flow test cases
+    it "failing test case for improper imputs" do
+      expect { object.add("1,,2") }.to raise_error(StandardError)
+    end
+
+    it "failing test case for negative numbers" do
+      expect { object.add("//*\n1*-2") }.to raise_error(StandardError)
     end
   end
 end

@@ -13,9 +13,10 @@ class StringCalculator
     string_validator(string)
 
     # ? If string not empty move ahead with the summation
-    string = set_delimeter(string)
-    numbers = number_parser(string)
-    answer = sum(numbers)
+    string = set_delimeter(string) # * Setter method
+    numbers = number_parser(string) # * Parser method
+    negative_number(numbers) # !! Validation method
+    answer = sum(numbers) # ** Summation method
 
     return answer
   end
@@ -30,6 +31,13 @@ class StringCalculator
   # ? Extracts the numbers from agiven string
   def number_parser(string)
     return string.split(/#{@delimeter}/)
+  end
+
+  def negative_number(numbers)
+    negative_numbers = numbers.select { |number| number.to_i < 0 }
+    unless negative_numbers.empty?
+      raise "Negative numbers not allowed: #{negatives.join(', ')}"
+    end
   end
 
   def string_validator(string)
