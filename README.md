@@ -1,10 +1,10 @@
 # String Calculator
 
-A simple String Calculator implementation using Ruby and RSpec, built using Test-Driven Development (TDD) approach.
+A simple String Calculator implementation using Ruby and RSpec
 
 ## Objective
 
-The goal of this project is to build a calculator that can take a string of numbers with various delimiters and return their sum. The project follows TDD best practices — each feature was implemented incrementally with tests written before implementation.
+The goal of this project is to build a calculator that can take a string of numbers with various delimiters and return their sum.
 
 ---
 
