@@ -3,8 +3,7 @@ class StringCalculator
   end
 
   def add(string)
-    begin
-      sum = 0
+    sum = 0
       if string.empty?
         return sum # ? If string is empty return '0'
       end
@@ -18,8 +17,5 @@ class StringCalculator
       sum = numbers.map(&:to_i).sum
 
       return sum
-    rescue => error
-      puts error
-    end
   end
 end
