@@ -28,6 +28,6 @@ class StringCalculator
   
   # ? Extracts the numbers from agiven string
   def number_parser(string)
-    return string.split(/[,]/)
+    return string.split(/[\n,]/)
   end
 end
