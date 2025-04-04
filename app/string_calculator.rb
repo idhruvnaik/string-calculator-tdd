@@ -13,9 +13,21 @@ class StringCalculator
       end
 
       # ? If string not empty move ahead with the summation
-      numbers = string.split(",")
-      sum = numbers.map(&:to_i).sum
+      numbers = number_parser(string)
+      answer = sum(numbers)
 
-      return sum
+      return answer
+  end
+
+  private 
+
+  # ? Performs the sum of given numbers
+  def sum(numbers = [])
+    return numbers.map(&:to_i).sum
+  end
+  
+  # ? Extracts the numbers from agiven string
+  def number_parser(string)
+    return string.split(/[,]/)
   end
 end
